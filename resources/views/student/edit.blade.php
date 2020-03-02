@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title>Bootstrap 实例 - 水平表单</title>
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">  
+	<script src="/static/is/jquery.min.js"></script>
+	<script src="/static/js/bootstrap.min.js"></script>
+</head>
+<body>
+<center><h2>编辑学生信息</h2><hr/></center>
+<form class="form-horizontal" role="form" action="{{url('/student/update/'.$user->s_id)}}" method="post">
+	@csrf
+	<div class="form-group">
+		<label for="firstname" class="col-sm-2 control-label">学生姓名</label>
+		<div class="col-sm-8">
+			<input type="text" class="form-control" id="firstname"  name="s_name"  value="{{$user->s_name}}"
+				   placeholder="请输入名字">
+			 <b style="color:red">{{$errors->first('s_name')}}</b>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="firstname" class="col-sm-2 control-label">学生性别</label>
+		<div class="col-sm-8">
+				<input type="radio" name="s_sex" id="optionsRadios4"   value="1" @if($user->s_sex==1) checked @endif>男
+				<input type="radio" name="s_sex" id="optionsRadios4"   value="2" @if($user->s_sex==2) checked @endif>女
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="firstname" class="col-sm-2 control-label">学生班级</label>
+		<div class="col-sm-8">
+			<input type="text" class="form-control" id="firstname" name="s_class" value="{{$user->s_class}}"
+				   placeholder="请输入班级">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="firstname" class="col-sm-2 control-label">学生成绩</label>
+		<div class="col-sm-8">
+			<input type="text" class="form-control" id="firstname" name="s_success"  value="{{$user->s_success}}"
+				   placeholder="请输入成绩">
+			<b style="color:red">{{$errors->first('s_success')}}</b>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button type="submit" class="btn btn-default">编辑</button>
+		</div>
+	</div>
+</form>
+
+</body>
+</html>
